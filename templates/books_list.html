@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book list</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="book-list">
+        <ol>
+            {% for book in books %}
+            <li>
+            <a href="{% url 'book:books_detail' pk=book.id %}">
+                {{ book.title }}
+            </a>
+            </li>
+            {% endfor %}
+        </ol>        
+    </div>
+    <h3><a href="{% url 'book:create_book' %}">Add book</a></h3>
+</body>
+</html>

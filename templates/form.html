@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Form</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <form action="{% url 'book:create_book' %}" method="post" enctype="multipart/form-data" class="book-form">
+        {% csrf_token %}
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" maxlength="255" required minlength="3">
+
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" maxlength="255" required minlength="3">
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea>
+
+        <label for="pages">Pages:</label>
+        <input type="number" id="pages" name="pages" min="1" required>
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" step="0.01" min="0" required>
+
+        <label for="cover">Cover:</label>
+        <select id="cover" name="cover">
+            <option value="qattiq">Hard</option>
+            <option value="yumshoq" selected>Soft</option>
+        </select>
+
+        <label for="cover_view">Cover Image:</label>
+        <input type="file" id="cover_view" name="cover_view" accept="image/*">
+
+        <button type="submit">Submit</button>
+    </form>
+    <h1><a href="{% url 'book:books_list' %}">Back</a></h1>
+</body>
+</html>

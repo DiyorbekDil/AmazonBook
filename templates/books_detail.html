@@ -1,0 +1,23 @@
+{%  load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book view</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="book-view">
+        <ol>
+        <li><h3>Title: {{ book.title }}</h3></li>
+        <li><h3>Author: {{ book.author }}</h3></li>
+        <li><p>Description: {{ book.description }}</p></li>
+        <li><p>Pages: {{ book.pages }}</p></li>
+        <li><p>Price: {{ book.price }}</p></li>
+        <li><p>Cover: {{ book.cover }}</p></li>
+    </ol>
+    <img src="{{ book.cover_view.url }}" alt="aji-buji">
+    <a href="{% url 'book:books_list' %}"><h3>Back</h3></a>
+    </div>
+</body>
+</html>
